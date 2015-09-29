@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/myshape"
+    android:gravity="center" >
+
+    <EditText
+        android:id="@+id/searchfield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/itemtosearch"
+        android:inputType="textFilter"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/buttonSearchSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchfield"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description"
+        android:padding="5dp"
+        android:src="@drawable/state_images" />
+
+    <TextView
+        android:id="@+id/textsearchsubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchfield"
+        android:layout_toRightOf="@+id/buttonSearchSubmit"
+        android:text="@string/searchsubmit"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/resulticon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/buttonSearchSubmit"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/description"
+        android:src="@drawable/ok" />
+
+    <ImageButton
+        android:id="@+id/buttonUndo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resulticon"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description"
+        android:padding="5dp"
+        android:src="@drawable/undo"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/textUndo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resulticon"
+        android:layout_toRightOf="@+id/buttonUndo"
+        android:text="@string/undo"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/buttonExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonUndo"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description"
+        android:padding="5dp"
+        android:src="@drawable/exit" />
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Aagje"</string>
+    <string name="action_settings">Settings</string>
+    <string name="showlist">Show List</string>
+    <string name="emptylist">Empty List</string>
+    <string name="sendlist">Send List</string>
+    <string name="downloadimage">Download Image</string>
+    <string name="loadimage">Load Image</string>
+    <string name="scan">Scan</string>
+    <string name="description">Description</string>
+    <string name="itemname">Item name</string>
+    <string name="scanarticle">Scan Article</string>
+    <string name="location_label">Location</string>
+    <string name="destination_label">Destination</string>
+    <string name="destination_default">/topic/destination</string>
+    <string name="location_default">ws://192.168.1.31:8001/jms</string>
+    <string name="subscribe_label">Subscribe</string>
+    <string name="unsubscribe_label">Unsubscribe</string>
+    <string name="message_label">Message</string>
+    <string name="send_label">Send</string>
+    <string name="clear_label">Clear</string>
+    <string name="ok_label">OK</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="variousinformation">Various Information</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="backtomain">Back to Main</string>
+    <string name="drag">Shopping</string>
+    <string name="article1">Article 1</string>
+    <string name="article2">Article 2</string>
+    <string name="article3">Article 3</string>
+    <string name="topcontainer">Top Container</string>
+    <string name="bottomcontainer">Bottom Container</string>
+    <string name="clear_cart">Clear Cart</string>
+    <string name="activity_text">Sub-Activity</string>
+    <string name="menu_settings">Settings</string>
+    <string name="translateanimations">Translate Animations</string>
+    <string name="title_section3">Meats</string>
+    <string name="title_section2">Bread cake</string>
+    <string name="title_section1">Vegetables fruits</string>
+    <string name="tabs">Shopping by Assortment</string>
+    <string name="userinterface">Offer of the Week</string>
+    <string name="offerdescription">Offer Description</string>
+    <string name="about">http://botercartoons.nl</string>
+    <string name="botercartoons">BoterCartoons</string>
+    <string name="instructions">Please Swipe</string>
+    <string name="inventorylist">Inventory List</string>
+    <string name="numberofitems">Number of items</string>
+    <string name="sswitch">Switch</string>
+    <string name="animation">Delivery at Home</string>
+    <string name="action_search">Search Action</string>
+    <string name="itemtosearch">Item to Search</string>
+    <string name="searchsubmit">Search Submit</string>
+    <string name="listview">Assortment OverView</string>
+    <string name="articlesdelivered">Articles Delivered</string>
+    <string name="undo">Undo</string>
+    <string name="player">Audio Player</string>
+    <string name="testsong">http://192.168.1.31/music/1050f49223064225a8b3a0fe9f38677f.mp3</string>
+    <string name="TestPlayPause">TestPlayPause"</string>
+
+</resources>

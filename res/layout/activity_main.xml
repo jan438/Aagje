@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/buttonShowList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/buttonShowList"
+            android:text="@string/showlist"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/clearCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonShowList"
+            android:checked="false"
+            android:text="@string/clear_cart" >
+        </CheckBox>
+
+        <ImageButton
+            android:id="@+id/buttonScanArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clearCart"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clearCart"
+            android:layout_toRightOf="@+id/buttonScanArticle"
+            android:text="@string/scanarticle"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/buttonSendList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonScanArticle"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonScanArticle"
+            android:layout_toRightOf="@+id/buttonSendList"
+            android:text="@string/sendlist"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/buttonVariousInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonSendList"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonSendList"
+            android:layout_toRightOf="@+id/buttonVariousInformation"
+            android:text="@string/variousinformation"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/buttonTabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonVariousInformation"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonVariousInformation"
+            android:layout_toRightOf="@+id/buttonTabs"
+            android:text="@string/tabs"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/buttonUserInterface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonTabs"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonTabs"
+            android:layout_toRightOf="@+id/buttonUserInterface"
+            android:text="@string/userinterface"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/buttonInventoryList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonUserInterface"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonUserInterface"
+            android:layout_toRightOf="@+id/buttonInventoryList"
+            android:text="@string/inventorylist"
+            android:textSize="20sp" />
+        
+        
+        <ImageButton
+            android:id="@+id/buttonAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonInventoryList"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonInventoryList"
+            android:layout_toRightOf="@+id/buttonAnimation"
+            android:text="@string/animation"
+            android:textSize="20sp" />
+        
+        <ImageButton
+            android:id="@+id/buttonListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonAnimation"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonAnimation"
+            android:layout_toRightOf="@+id/buttonListView"
+            android:text="@string/listview"
+            android:textSize="20sp" />
+        
+        <ImageButton
+            android:id="@+id/buttonPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonListView"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonListView"
+            android:layout_toRightOf="@+id/buttonPlayer"
+            android:text="@string/player"
+            android:textSize="20sp" />
+                
+        <ImageButton
+            android:id="@+id/buttonExitMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonPlayer"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/exit" />
+        
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mylab.aagje.userinterface.OfferLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/buttonarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_selector_background_disabled_light"
+        android:gravity="right" >
+
+        <ImageButton
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_selector_background_disabled_light"
+            android:contentDescription="@string/description"
+            android:onClick="onClick"
+            android:src="@drawable/ic_menu_refresh" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="gone" >
+        </ProgressBar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.mylab.aagje.userinterface.RoundImageView
+            android:id="@+id/editablePhoto1"
+            android:layout_width="173dp"
+            android:layout_height="198dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp" >
+        </com.mylab.aagje.userinterface.RoundImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/toucharea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/list_selector_background_disabled_light"
+                android:contentDescription="@string/description"
+                android:onClick="onClick"
+                android:src="@drawable/barcode" >
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/offerdescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toucharea"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/offerdescription" >
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <ImageButton
+        android:id="@+id/buttonOffertoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description"
+        android:padding="5dp"
+        android:src="@drawable/exit" />
+
+
+</com.mylab.aagje.userinterface.OfferLinearLayout>

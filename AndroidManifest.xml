@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mylab.aagje"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/barcode"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.mylab.aagje.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.mylab.aagje.LookupActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.jms.JMSDemoActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.info.WeatherActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.assortment.AddActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.tabs.TabsActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.userinterface.OfferActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.info.BoterCartoonsActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.inventory.InventoryListActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.animation.AnimationActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.animation.ChangeItemActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.listview.ListViewActivity" >
+        </activity>
+        <activity android:name="com.mylab.aagje.audio.PlayerActivity" >
+        </activity>
+    </application>
+
+</manifest>

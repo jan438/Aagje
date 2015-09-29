@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="/home/jan/Downloads/kaazing-websocket-gateway-jms-4.0.9/demo/android/src/jms/libs/com.kaazing.gateway.client.android.jar"/>
+	<classpathentry kind="lib" path="/home/jan/Downloads/kaazing-websocket-gateway-jms-4.0.9/demo/android/src/jms/libs/com.kaazing.gateway.jms.client.android.jar"/>
+	<classpathentry kind="lib" path="/home/jan/Downloads/kaazing-websocket-gateway-jms-4.0.9/lib/geronimo-jms_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/jan/Downloads/zxing-BS-4.7.3/android-integration/target/android-integration-3.2.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
