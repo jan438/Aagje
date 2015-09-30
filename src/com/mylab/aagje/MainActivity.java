@@ -8,13 +8,14 @@ import java.util.List;
 
 import com.mylab.aagje.animation.AnimationActivity;
 import com.mylab.aagje.assortment.AddActivity;
-import com.mylab.aagje.audio.PlayerActivity;
+import com.mylab.aagje.audio.AudioPlayerActivity;
 import com.mylab.aagje.info.WeatherActivity;
 import com.mylab.aagje.inventory.InventoryListActivity;
 import com.mylab.aagje.jms.JMSDemoActivity;
 import com.mylab.aagje.listview.ListViewActivity;
 import com.mylab.aagje.tabs.TabsActivity;
 import com.mylab.aagje.userinterface.OfferActivity;
+import com.mylab.aagje.video.VideoPlayerActivity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -161,7 +162,12 @@ public class MainActivity extends Activity {
 					finish();
 					break;
 				case R.id.buttonPlayer:
-					intent = new Intent(v.getContext(), PlayerActivity.class);
+					intent = new Intent(v.getContext(), AudioPlayerActivity.class);
+					startActivity(intent);
+					finish();
+					break;
+				case R.id.buttonVideoPlayer:
+					intent = new Intent(v.getContext(), VideoPlayerActivity.class);
 					startActivity(intent);
 					finish();
 					break;
@@ -181,6 +187,7 @@ public class MainActivity extends Activity {
 		findViewById(R.id.buttonAnimation).setOnClickListener(handler);
 		findViewById(R.id.buttonListView).setOnClickListener(handler);
 		findViewById(R.id.buttonPlayer).setOnClickListener(handler);
+		findViewById(R.id.buttonVideoPlayer).setOnClickListener(handler);
 		findViewById(R.id.buttonExitMain).setOnClickListener(handler);
 	}
 

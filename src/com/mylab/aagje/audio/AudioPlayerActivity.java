@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
-public class PlayerActivity extends Activity implements OnClickListener,
+public class AudioPlayerActivity extends Activity implements OnClickListener,
 		OnTouchListener, OnCompletionListener, OnBufferingUpdateListener {
 
 	private ImageButton buttonPlayPause;
@@ -31,7 +31,7 @@ public class PlayerActivity extends Activity implements OnClickListener,
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_player);
+		setContentView(R.layout.activity_audioplayer);
 		View.OnClickListener handler = new View.OnClickListener() {
 			public void onClick(View v) {
 				switch (v.getId()) {

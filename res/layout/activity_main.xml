@@ -204,12 +204,31 @@
             android:layout_toRightOf="@+id/buttonPlayer"
             android:text="@string/player"
             android:textSize="20sp" />
+                   
+        <ImageButton
+            android:id="@+id/buttonVideoPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonPlayer"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+            android:src="@drawable/state_images" />
+
+        <TextView
+            android:id="@+id/textview11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonPlayer"
+            android:layout_toRightOf="@+id/buttonVideoPlayer"
+            android:text="@string/videoplayer"
+            android:textSize="20sp" />
                 
         <ImageButton
             android:id="@+id/buttonExitMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonPlayer"
+            android:layout_below="@+id/buttonVideoPlayer"
             android:background="@android:color/transparent"
             android:contentDescription="@string/description"
             android:padding="5dp"
