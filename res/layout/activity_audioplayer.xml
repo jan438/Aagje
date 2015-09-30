@@ -50,4 +50,15 @@
         android:padding="5dp"
         android:src="@drawable/exit" />
 
+    <ImageView
+        android:id="@+id/album_art"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SeekBarTestPlay"
+        android:layout_toRightOf="@+id/buttonExit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/albumart" />
+
 </RelativeLayout>

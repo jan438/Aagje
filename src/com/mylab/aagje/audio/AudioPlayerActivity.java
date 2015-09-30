@@ -1,9 +1,14 @@
 package com.mylab.aagje.audio;
 
+import java.util.HashMap;
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -15,7 +20,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 public class AudioPlayerActivity extends Activity implements OnClickListener,
 		OnTouchListener, OnCompletionListener, OnBufferingUpdateListener {
@@ -23,10 +30,11 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 	private ImageButton buttonPlayPause;
 	private SeekBar seekBarProgress;
 	public EditText editTextSongURL;
-
 	private MediaPlayer mediaPlayer;
 	private int mediaFileLengthInMilliseconds;
 	private final Handler handler = new Handler();
+	MediaMetadataRetriever metaRetriver;
+	byte[] art;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,10 +68,27 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		seekBarProgress.setOnTouchListener(this);
 		editTextSongURL = (EditText) findViewById(R.id.EditTextSongURL);
 		editTextSongURL.setText(R.string.testsong);
-
+		Bitmap songImage = downloadBitmap("http://192.168.1.31/music/1050f49223064225a8b3a0fe9f38677f.mp3");
+		ImageView albumart = (ImageView) findViewById(R.id.album_art);
+		albumart.setImageBitmap(songImage);
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnBufferingUpdateListener(this);
 		mediaPlayer.setOnCompletionListener(this);
+	}
+
+	private Bitmap downloadBitmap(final String url) {
+		final MediaMetadataRetriever metaRetriever = new MediaMetadataRetriever();
+		Bitmap songImage = null;
+		metaRetriever.setDataSource(url, new HashMap<String, String>());
+		try {
+			final byte[] art = metaRetriever.getEmbeddedPicture();
+			songImage = BitmapFactory.decodeByteArray(art, 0, art.length);
+		} catch (Exception e) {
+			Context context = getApplicationContext();
+			Toast toast = Toast.makeText(context, "Album Art missing", Toast.LENGTH_LONG);
+			toast.show();
+		}
+		return songImage;
 	}
 
 	private void primarySeekBarProgressUpdater() {
