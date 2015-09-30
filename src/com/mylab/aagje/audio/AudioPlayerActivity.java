@@ -70,7 +70,7 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		editTextSongURL.setText(R.string.testsong);
 		Bitmap songImage = downloadBitmap("http://192.168.1.31/music/1050f49223064225a8b3a0fe9f38677f.mp3");
 		ImageView albumart = (ImageView) findViewById(R.id.album_art);
-		albumart.setImageBitmap(songImage);
+		if (songImage != null) albumart.setImageBitmap(songImage);
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnBufferingUpdateListener(this);
 		mediaPlayer.setOnCompletionListener(this);

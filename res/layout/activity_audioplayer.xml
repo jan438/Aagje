@@ -59,6 +59,7 @@
         android:layout_toRightOf="@+id/buttonExit"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="10dp"
+        android:src="@drawable/barcode" 
         android:contentDescription="@string/albumart" />
 
 </RelativeLayout>
