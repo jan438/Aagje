@@ -1,9 +1,9 @@
 package com.mylab.aagje;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-/*import com.mylab.stub.IntentResult;
-import com.mylab.stub.IntentIntegrator;*/
+/*import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;*/
+import com.mylab.stub.IntentResult;
+import com.mylab.stub.IntentIntegrator;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;

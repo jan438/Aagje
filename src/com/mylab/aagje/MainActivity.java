@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 		tf = null;
 		try {
 			tf = Typeface.createFromAsset(getAssets(),
-					"Montserrat-Regular.ttf");
+					"fonts/AeroviasBrasilNF.ttf");
 		} catch (RuntimeException e) {
 			Toast toast = Toast.makeText(context, "Font missing",
 					Toast.LENGTH_LONG);
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		height = size.y;
 		if (width > height)
 			landscapemode = true;
-		CharSequence text = "Aagje version 1.0o " + density + " "
+		CharSequence text = "Aagje version 1.0p " + density + " "
 				+ landscapemode + " " + sinetAddress;
 		Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
 		toast.show();
