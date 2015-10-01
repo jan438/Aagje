@@ -1,10 +1,8 @@
 package com.mylab.aagje.animation;
 
 import java.util.Random;
-
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
-
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
@@ -19,6 +17,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,9 +50,10 @@ public class AnimationActivity extends Activity {
 		} else {
 			animation_item_index = itemindex;
 		}
-		((TextView) findViewById(R.id.textView1))
-				.setText(MainActivity.Assortment.get(animation_item_index)
-						.getItemName());
+		TextView tv = ((TextView) findViewById(R.id.textView1));
+		tv.setTypeface(MainActivity.tf, Typeface.BOLD);
+		tv.setText(MainActivity.Assortment.get(animation_item_index)
+				.getItemName());
 		if (choosenitem != null)
 			choosenitem.recycle();
 		choosenitem = getResizedBitmap(
@@ -91,38 +91,45 @@ public class AnimationActivity extends Activity {
 			fadeIn.setDuration(2000);
 			AnimatorSet animatorSet = new AnimatorSet();
 			mover.addListener(new AnimatorListener() {
-			    @Override 
-			    public void onAnimationEnd(Animator animation) {
-					Intent notificationIntent = new Intent(context, MainActivity.class);
-					PendingIntent contentIntent = PendingIntent.getActivity(context, 88,
-							notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+				@Override
+				public void onAnimationEnd(Animator animation) {
+					Intent notificationIntent = new Intent(context,
+							MainActivity.class);
+					PendingIntent contentIntent = PendingIntent.getActivity(
+							context, 88, notificationIntent,
+							PendingIntent.FLAG_CANCEL_CURRENT);
 					Resources res = context.getResources();
-					Notification.Builder builder = new Notification.Builder(context);
+					Notification.Builder builder = new Notification.Builder(
+							context);
 					builder.setContentIntent(contentIntent)
 							.setSmallIcon(R.drawable.barcode)
 							.setLargeIcon(
-									BitmapFactory.decodeResource(res, R.drawable.barcode))
-							.setTicker(res.getString(R.string.articlesdelivered))
-							.setWhen(System.currentTimeMillis()).setAutoCancel(true)
+									BitmapFactory.decodeResource(res,
+											R.drawable.barcode))
+							.setTicker(
+									res.getString(R.string.articlesdelivered))
+							.setWhen(System.currentTimeMillis())
+							.setAutoCancel(true)
 							.setContentTitle(res.getString(R.string.animation))
-							.setContentText(res.getString(R.string.articlesdelivered));
+							.setContentText(
+									res.getString(R.string.articlesdelivered));
 					Notification n = builder.build();
 					nm.notify(MainActivity.notificationid, n);
-			    }
-
-				@Override
-				public void onAnimationCancel(Animator animation) {	
 				}
 
 				@Override
-				public void onAnimationRepeat(Animator animation) {		
+				public void onAnimationCancel(Animator animation) {
 				}
 
 				@Override
-				public void onAnimationStart(Animator animation) {			
+				public void onAnimationRepeat(Animator animation) {
+				}
+
+				@Override
+				public void onAnimationStart(Animator animation) {
 				}
 			});
-			animatorSet.play(mover).with(fadeIn).after(fadeOut);		
+			animatorSet.play(mover).with(fadeIn).after(fadeOut);
 			animatorSet.start();
 			break;
 		default:

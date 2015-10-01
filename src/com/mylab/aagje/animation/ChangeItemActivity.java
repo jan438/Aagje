@@ -4,6 +4,7 @@ import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,18 +20,16 @@ public class ChangeItemActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_changeitem);
 		EditText search = (EditText) findViewById(R.id.searchfield);
+		search.setTypeface(MainActivity.tf, Typeface.BOLD_ITALIC);
 		search.addTextChangedListener(new TextWatcher() {
 			public void afterTextChanged(Editable s) {
 				if ((s != null) && (s.length() > 0)) {
 					itemname = s.toString();
 				}
-
 			}
-
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
 			}
-
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 			}

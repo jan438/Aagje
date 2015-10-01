@@ -5,7 +5,6 @@ import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-
 import com.mylab.aagje.animation.AnimationActivity;
 import com.mylab.aagje.assortment.AddActivity;
 import com.mylab.aagje.audio.AudioPlayerActivity;
@@ -16,7 +15,6 @@ import com.mylab.aagje.listview.ListViewActivity;
 import com.mylab.aagje.tabs.TabsActivity;
 import com.mylab.aagje.userinterface.OfferActivity;
 import com.mylab.aagje.video.VideoPlayerActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -31,6 +29,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.graphics.Typeface;
 
 public class MainActivity extends Activity {
 	AlertDialog alertDialogArticles;
@@ -43,6 +42,7 @@ public class MainActivity extends Activity {
 	public static int height;
 	public static int notificationid;
 	private static final String TAG = "MainActivity";
+	public static Typeface tf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,15 @@ public class MainActivity extends Activity {
 		InetAddress inetAddress = null;
 		String sinetAddress = "";
 		Context context = getApplicationContext();
+		tf = null;
+		try {
+			tf = Typeface.createFromAsset(getAssets(),
+					"Montserrat-Regular.ttf");
+		} catch (RuntimeException e) {
+			Toast toast = Toast.makeText(context, "Font missing",
+					Toast.LENGTH_LONG);
+			toast.show();
+		}
 		try {
 			for (Enumeration<NetworkInterface> en = NetworkInterface
 					.getNetworkInterfaces(); en.hasMoreElements();) {
@@ -76,7 +85,7 @@ public class MainActivity extends Activity {
 		height = size.y;
 		if (width > height)
 			landscapemode = true;
-		CharSequence text = "Aagje version 1.0m " + density + " "
+		CharSequence text = "Aagje version 1.0o " + density + " "
 				+ landscapemode + " " + sinetAddress;
 		Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
 		toast.show();
@@ -162,12 +171,14 @@ public class MainActivity extends Activity {
 					finish();
 					break;
 				case R.id.buttonPlayer:
-					intent = new Intent(v.getContext(), AudioPlayerActivity.class);
+					intent = new Intent(v.getContext(),
+							AudioPlayerActivity.class);
 					startActivity(intent);
 					finish();
 					break;
 				case R.id.buttonVideoPlayer:
-					intent = new Intent(v.getContext(), VideoPlayerActivity.class);
+					intent = new Intent(v.getContext(),
+							VideoPlayerActivity.class);
 					startActivity(intent);
 					finish();
 					break;
