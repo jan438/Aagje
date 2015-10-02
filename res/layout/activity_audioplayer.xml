@@ -54,12 +54,20 @@
         android:id="@+id/album_art"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/SeekBarTestPlay"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/buttonExit"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/barcode" 
-        android:contentDescription="@string/albumart" />
+        android:contentDescription="@string/albumart"
+        android:src="@drawable/barcode" />
+
+    <TextView
+        android:id="@+id/songinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SeekBarTestPlay"
+        android:layout_toRightOf="@+id/album_art"
+        android:layout_margin="16dp"
+        android:text="@string/description"
+        android:textSize="32sp" />
 
 </RelativeLayout>

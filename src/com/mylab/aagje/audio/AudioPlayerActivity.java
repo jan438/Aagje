@@ -1,8 +1,10 @@
 package com.mylab.aagje.audio;
 
 import java.util.HashMap;
+
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +16,9 @@ import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AudioPlayerActivity extends Activity implements OnClickListener,
@@ -71,6 +77,19 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		Bitmap songImage = downloadBitmap("http://192.168.1.31/music/1050f49223064225a8b3a0fe9f38677f.mp3");
 		ImageView albumart = (ImageView) findViewById(R.id.album_art);
 		if (songImage != null) albumart.setImageBitmap(songImage);
+		TextView textView = (TextView) findViewById(R.id.songinfo);
+		String header = "This is the header";
+		String description = "This is the description";
+		Spannable styledText = new SpannableString(header + "\n" + description);
+		TextAppearanceSpan span1 = new TextAppearanceSpan(this,
+				R.style.textHeader);
+		TextAppearanceSpan span2 = new TextAppearanceSpan(this,
+				R.style.textbody);
+		styledText.setSpan(span1, 0, header.length(),
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		styledText.setSpan(span2, header.length() + 1, header.length() + 1
+				+ description.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		textView.setText(styledText);
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnBufferingUpdateListener(this);
 		mediaPlayer.setOnCompletionListener(this);
