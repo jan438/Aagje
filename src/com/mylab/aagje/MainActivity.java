@@ -15,6 +15,8 @@ import com.mylab.aagje.listview.ListViewActivity;
 import com.mylab.aagje.tabs.TabsActivity;
 import com.mylab.aagje.userinterface.OfferActivity;
 import com.mylab.aagje.video.VideoPlayerActivity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -43,6 +45,8 @@ public class MainActivity extends Activity {
 	public static int notificationid;
 	private static final String TAG = "MainActivity";
 	public static Typeface tf;
+	private static ConnectivityManager connectivityManager;
+	private NetworkInfo networkInfo = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,16 @@ public class MainActivity extends Activity {
 			}
 		} catch (Exception e) {
 			Log.e("------------", e.toString());
+		}
+		connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivityManager != null) {
+			networkInfo = connectivityManager
+					.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+			if (networkInfo != null) {
+				Toast toast = Toast.makeText(context, "WIFI Network info: "
+						+ networkInfo.getExtraInfo(), Toast.LENGTH_LONG);
+				toast.show();
+			}
 		}
 		display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
