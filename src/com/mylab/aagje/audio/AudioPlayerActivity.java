@@ -1,6 +1,10 @@
 package com.mylab.aagje.audio;
 
+import java.security.InvalidKeyException;
 import java.util.HashMap;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
 import android.app.Activity;
@@ -40,14 +44,18 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 	MediaMetadataRetriever metaRetriver;
 	byte[] art;
 	Encryption encryption;
+	static byte[] header;
+	static byte[] body;
+	static byte[] encryptedheader;
+	static byte[] encryptedbody;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		encryption = new Encryption();
 		if ((Encryption.symKey == null) || (Encryption.c == null)) {
-			Toast toast = Toast.makeText(getApplicationContext(), "Initialization encryption failed",
-					Toast.LENGTH_LONG);
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Initialization encryption failed", Toast.LENGTH_LONG);
 			toast.show();
 		}
 		setContentView(R.layout.activity_audioplayer);
@@ -83,9 +91,36 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		if (songImage != null)
 			albumart.setImageBitmap(songImage);
 		TextView textView = (TextView) findViewById(R.id.songinfo);
-		Encryption.encrypt();
-		String header = Encryption.decryptHeader();
-		String description = Encryption.decryptBody();
+		try {
+			header = Encryption.sheader.getBytes();
+			body = Encryption.sbody.getBytes();
+			encryptedheader = Encryption.c.doFinal(header);
+			encryptedbody = Encryption.c.doFinal(body);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String header = null;
+		try {
+			Encryption.c.init(Cipher.DECRYPT_MODE, Encryption.symKey);
+			header = new String(Encryption.c.doFinal(encryptedheader));
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
+		String description = null;
+		try {
+			Encryption.c.init(Cipher.DECRYPT_MODE, Encryption.symKey);
+			description = new String(Encryption.c.doFinal(encryptedbody));
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
 		Spannable styledText = new SpannableString(header + "\n" + description);
 		TextAppearanceSpan span1 = new TextAppearanceSpan(this,
 				R.style.textHeader);
