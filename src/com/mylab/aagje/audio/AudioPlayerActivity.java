@@ -1,10 +1,13 @@
 package com.mylab.aagje.audio;
 
 import java.security.InvalidKeyException;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.spec.SecretKeySpec;
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
 import android.app.Activity;
@@ -44,19 +47,33 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 	MediaMetadataRetriever metaRetriver;
 	byte[] art;
 	Encryption encryption;
+	static Cipher c;
 	static byte[] header;
 	static byte[] body;
 	static byte[] encryptedheader;
 	static byte[] encryptedbody;
+	static SecretKeySpec symKey;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		encryption = new Encryption();
-		if ((Encryption.symKey == null) || (Encryption.c == null)) {
-			Toast toast = Toast.makeText(getApplicationContext(),
-					"Initialization encryption failed", Toast.LENGTH_LONG);
-			toast.show();
+		SecureRandom sr;
+		try {
+			sr = SecureRandom.getInstance("SHA1PRNG");
+			sr.setSeed("any data used as random seed".getBytes());
+			KeyGenerator kg = KeyGenerator.getInstance("AES");
+			kg.init(128, sr);
+			symKey = new SecretKeySpec((kg.generateKey()).getEncoded(), "AES");
+			c = Cipher.getInstance("AES");
+			c.init(Cipher.ENCRYPT_MODE, symKey);
+			if ((symKey == null) || (c == null)) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Initialization encryption failed", Toast.LENGTH_LONG);
+				toast.show();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		setContentView(R.layout.activity_audioplayer);
 		View.OnClickListener handler = new View.OnClickListener() {
@@ -94,15 +111,15 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		try {
 			header = Encryption.sheader.getBytes();
 			body = Encryption.sbody.getBytes();
-			encryptedheader = Encryption.c.doFinal(header);
-			encryptedbody = Encryption.c.doFinal(body);
+			encryptedheader = c.doFinal(header);
+			encryptedbody = c.doFinal(body);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String header = null;
 		try {
-			Encryption.c.init(Cipher.DECRYPT_MODE, Encryption.symKey);
-			header = new String(Encryption.c.doFinal(encryptedheader));
+			c.init(Cipher.DECRYPT_MODE, symKey);
+			header = new String(c.doFinal(encryptedheader));
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
 		} catch (IllegalBlockSizeException e) {
@@ -112,8 +129,8 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		}
 		String description = null;
 		try {
-			Encryption.c.init(Cipher.DECRYPT_MODE, Encryption.symKey);
-			description = new String(Encryption.c.doFinal(encryptedbody));
+			c.init(Cipher.DECRYPT_MODE, symKey);
+			description = new String(c.doFinal(encryptedbody));
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
 		} catch (IllegalBlockSizeException e) {
