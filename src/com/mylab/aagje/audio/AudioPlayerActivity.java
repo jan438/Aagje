@@ -40,19 +40,19 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 
 	private ImageButton buttonPlayPause;
 	private SeekBar seekBarProgress;
-	public EditText editTextSongURL;
+	private EditText editTextSongURL;
 	private MediaPlayer mediaPlayer;
 	private int mediaFileLengthInMilliseconds;
 	private final Handler handler = new Handler();
 	MediaMetadataRetriever metaRetriver;
 	byte[] art;
 	Encryption encryption;
-	static Cipher c;
-	static byte[] header;
-	static byte[] body;
-	static byte[] encryptedheader;
-	static byte[] encryptedbody;
-	static SecretKeySpec symKey;
+	Cipher c;
+	byte[] header;
+	byte[] body;
+	byte[] encryptedheader;
+	byte[] encryptedbody;
+	private SecretKeySpec symKey;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
