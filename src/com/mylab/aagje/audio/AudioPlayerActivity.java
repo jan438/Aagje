@@ -1,10 +1,8 @@
 package com.mylab.aagje.audio;
 
 import java.util.HashMap;
-
 import com.mylab.aagje.MainActivity;
 import com.mylab.aagje.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,10 +39,17 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 	private final Handler handler = new Handler();
 	MediaMetadataRetriever metaRetriver;
 	byte[] art;
+	Encryption encryption;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		encryption = new Encryption();
+		if ((Encryption.symKey == null) || (Encryption.c == null)) {
+			Toast toast = Toast.makeText(getApplicationContext(), "Initialization encryption failed",
+					Toast.LENGTH_LONG);
+			toast.show();
+		}
 		setContentView(R.layout.activity_audioplayer);
 		View.OnClickListener handler = new View.OnClickListener() {
 			public void onClick(View v) {
@@ -68,7 +73,6 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 	private void initView() {
 		buttonPlayPause = (ImageButton) findViewById(R.id.ButtonTestPlayPause);
 		buttonPlayPause.setOnClickListener(this);
-
 		seekBarProgress = (SeekBar) findViewById(R.id.SeekBarTestPlay);
 		seekBarProgress.setMax(99);
 		seekBarProgress.setOnTouchListener(this);
@@ -76,10 +80,12 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 		editTextSongURL.setText(R.string.testsong);
 		Bitmap songImage = downloadBitmap("http://192.168.1.31/music/1050f49223064225a8b3a0fe9f38677f.mp3");
 		ImageView albumart = (ImageView) findViewById(R.id.album_art);
-		if (songImage != null) albumart.setImageBitmap(songImage);
+		if (songImage != null)
+			albumart.setImageBitmap(songImage);
 		TextView textView = (TextView) findViewById(R.id.songinfo);
-		String header = "This is the header";
-		String description = "This is the description";
+		Encryption.encrypt();
+		String header = Encryption.decryptHeader();
+		String description = Encryption.decryptBody();
 		Spannable styledText = new SpannableString(header + "\n" + description);
 		TextAppearanceSpan span1 = new TextAppearanceSpan(this,
 				R.style.textHeader);
@@ -104,7 +110,8 @@ public class AudioPlayerActivity extends Activity implements OnClickListener,
 			songImage = BitmapFactory.decodeByteArray(art, 0, art.length);
 		} catch (Exception e) {
 			Context context = getApplicationContext();
-			Toast toast = Toast.makeText(context, "Album Art missing", Toast.LENGTH_LONG);
+			Toast toast = Toast.makeText(context, "Album Art missing",
+					Toast.LENGTH_LONG);
 			toast.show();
 		}
 		return songImage;
